@@ -32,12 +32,12 @@ public class InvClick implements Listener {
     public void on(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
         if (e.getView().getTitle().equals("§bBeacon")) {
-            if (!(e.getClickedInventory() instanceof PlayerInventory) && (e.getSlot() != 49 || !Config.getValueAsBoolean(ConfigValuesOther.RequiresMaterialForEffectChange))) {
+            if (!(e.getClickedInventory() instanceof PlayerInventory) && (e.getSlot() != 49)) {
                 e.setCancelled(true);
                 Beacon beaconState = (Beacon) locs.get(player).getBlock().getState();
                 BeaconClass beaconClass = Main.getBeaconManager().getBeacon(locs.get(player));
                 if (e.getCurrentItem() == null) return;
-                if (e.getCurrentItem().getType().equals(Material.ENDER_EYE)) {
+                if (e.getSlot() == 43) {
                     if (e.getClickedInventory().getItem(49) != null) {
                         ItemStack item = e.getClickedInventory().getItem(49);
                         if (item.getType().equals(Material.DIAMOND) || item.getType().equals(Material.EMERALD) || item.getType().equals(Material.NETHERITE_INGOT) || item.getType().equals(Material.IRON_INGOT) || item.getType().equals(Material.GOLD_INGOT)) {
@@ -297,6 +297,13 @@ public class InvClick implements Listener {
                             ItemStack noEffect = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§5").build();
                             inventory.setItem(37, new ItemBuilder(Material.PAPER).setName("§bWhitelist").build());
                             inventory.setItem(43, new ItemBuilder(Material.ENDER_EYE).setName("§aAdd Range").setLore(getLore(beaconClass.getRange())).build());
+                            inventory.setItem(49, new ItemStack(Material.AIR));
+                            ItemStack highlight = new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE).setName("§5").build();
+                            inventory.setItem(48, highlight);
+                            inventory.setItem(50, highlight);
+                            inventory.setItem(40, highlight);
+                            inventory.setItem(39, highlight);
+                            inventory.setItem(41, highlight);
                             inventory.setItem(11, beaconClass.getPrimary() == null ? new ItemBuilder(noEffect.clone()).setName("§cPrimary effect").build() : beaconClass.getPrimary().getIcon());
                             inventory.setItem(15, beaconClass.getSecondary() == null ? new ItemBuilder(noEffect.clone()).setName("§cSecondary effect").build() : beaconClass.getSecondary().getIcon());
                             inventory.setItem(22, beaconClass.isCanWhitelistedEdit() ? new ItemBuilder(Material.LIME_DYE).setName("§aWhitelisted can edit Beacon").build() : new ItemBuilder(Material.RED_DYE).setName("§cWhitelisted cant edit Beacon").build());
@@ -358,6 +365,12 @@ public class InvClick implements Listener {
                             ItemStack highlight = new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE).setName("§5").build();
                             inventory.setItem(37, new ItemBuilder(Material.PAPER).setName("§bWhitelist").build());
                             inventory.setItem(43, new ItemBuilder(Material.ENDER_EYE).setName("§aAdd Range").setLore(getLore(beaconClass.getRange())).build());
+                            inventory.setItem(49, new ItemStack(Material.AIR));
+                            inventory.setItem(48, highlight);
+                            inventory.setItem(50, highlight);
+                            inventory.setItem(40, highlight);
+                            inventory.setItem(39, highlight);
+                            inventory.setItem(41, highlight);
                             inventory.setItem(11, beaconClass.getPrimary() == null ? new ItemBuilder(noEffect.clone()).setName("§cPrimary effect").build() : beaconClass.getPrimary().getIcon());
                             inventory.setItem(15, beaconClass.getSecondary() == null ? new ItemBuilder(noEffect.clone()).setName("§cSecondary effect").build() : beaconClass.getSecondary().getIcon());
                             inventory.setItem(22, beaconClass.isCanWhitelistedEdit() ? new ItemBuilder(Material.LIME_DYE).setName("§aWhitelisted can edit Beacon").build() : new ItemBuilder(Material.RED_DYE).setName("§cWhitelisted cant edit Beacon").build());

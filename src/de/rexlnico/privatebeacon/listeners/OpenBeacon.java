@@ -38,14 +38,12 @@ public class OpenBeacon implements Listener {
                     ItemStack highlight = new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE).setName("§5").build();
                     inventory.setItem(37, new ItemBuilder(Material.PAPER).setName("§bWhitelist").build());
                     inventory.setItem(43, new ItemBuilder(Material.ENDER_EYE).setName("§aAdd Range").setLore(getLore(beaconClass.getRange())).build());
-                    if (Config.getValueAsBoolean(ConfigValuesOther.RequiresMaterialForEffectChange)) {
-                        inventory.setItem(49, new ItemBuilder(Material.AIR).build());
-                        inventory.setItem(48, highlight);
-                        inventory.setItem(50, highlight);
-                        inventory.setItem(40, highlight);
-                        inventory.setItem(39, highlight);
-                        inventory.setItem(41, highlight);
-                    }
+                    inventory.setItem(49, new ItemBuilder(Material.AIR).build());
+                    inventory.setItem(48, highlight);
+                    inventory.setItem(50, highlight);
+                    inventory.setItem(40, highlight);
+                    inventory.setItem(39, highlight);
+                    inventory.setItem(41, highlight);
                     inventory.setItem(22, beaconClass.isCanWhitelistedEdit() ? new ItemBuilder(Material.LIME_DYE).setName("§aWhitelisted can edit Beacon").build() : new ItemBuilder(Material.RED_DYE).setName("§cWhitelisted cant edit Beacon").build());
                     inventory.setItem(11, beaconClass.getPrimary() == null ? new ItemBuilder(noEffect.clone()).setName("§cPrimary effect").build() : beaconClass.getPrimary().getIcon());
                     inventory.setItem(15, beaconClass.getSecondary() == null ? new ItemBuilder(noEffect.clone()).setName("§cSecondary effect").build() : beaconClass.getSecondary().getIcon());

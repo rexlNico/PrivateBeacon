@@ -138,18 +138,19 @@ public class BeaconClass {
             if (player != null && player.getLocation().getWorld().equals(location.getWorld())) {
                 if (player.getLocation().distance(location) <= range) {
                     Beacon beaconState = (Beacon) location.getBlock().getState();
+                    if (primary == null) return;
                     if (beaconState.getTier() >= primary.getTier()) {
                         try {
                             if (secondary == null) {
-                                player.addPotionEffect(new PotionEffect(primary.getPotionEffect(), 20 * 10, primary.getLv1()-1));
+                                player.addPotionEffect(new PotionEffect(primary.getPotionEffect(), 20 * 20, primary.getLv1() - 1));
                             } else if (secondary == primary) {
                                 if (beaconState.getTier() == 4) {
-                                    player.addPotionEffect(new PotionEffect(secondary.getPotionEffect(), 20 * 10, secondary.getLv2()-1));
+                                    player.addPotionEffect(new PotionEffect(secondary.getPotionEffect(), 20 * 20, secondary.getLv2() - 1));
                                 }
                             } else {
-                                player.addPotionEffect(new PotionEffect(primary.getPotionEffect(), 20 * 10, primary.getLv1()-1));
+                                player.addPotionEffect(new PotionEffect(primary.getPotionEffect(), 20 * 20, primary.getLv1() - 1));
                                 if (beaconState.getTier() >= secondary.getTier()) {
-                                    player.addPotionEffect(new PotionEffect(secondary.getPotionEffect(), 20 * 10, secondary.getLv1()-1));
+                                    player.addPotionEffect(new PotionEffect(secondary.getPotionEffect(), 20 * 20, secondary.getLv1() - 1));
                                 }
                             }
                         } catch (Exception ignored) {
