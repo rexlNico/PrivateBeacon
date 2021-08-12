@@ -1,5 +1,7 @@
 Adds private Beacons to your server
+
 Adds up to 28 beaconeffects
+
 Beacon range can be increased
 
 Beacon GUI
